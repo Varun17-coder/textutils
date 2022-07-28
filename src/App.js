@@ -5,15 +5,17 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
-import About from './components/About';
+// import About from './components/About';
 import React,{useState} from 'react'
 // react router is used to navigate the pages without loading the website much
 // visit reactrouter.com page for best clarification
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
+  
+// THIS IS FOR ABOUT PAGE 
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
 // import About from './components/About';
 
@@ -67,23 +69,29 @@ function App() {
 {/* this is the concept of props which we write in the Navbar tag as title */}
 {/* <Navbar title="TextUtils" aboutText="About Text"/> */}
 {/* <Navbar /> */}
-<Router>
+{/* <Router> */}
 
 <Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode}/>
 <Alert alert={alert}/>
 <div className="container my-3">
-<Routes>
+{/* <Routes> */}
   {/* /user ----> Component 1
   /user/home ---> ----> component 2 */}
-          <Route exact path="/about" element={<About/>} />
-          <Route exact path="/" element={<TextForm  showAlert={showAlert} heading="Enter the text to analyze below" mode={Mode}/>}/>
+          {/* <Route exact path="/about" element={<About/>} /> */}
+          {/* <Route exact path="/" element={<TextForm  showAlert={showAlert} heading="Enter the text to analyze below" mode={Mode}/>}/> */}
+          <TextForm  showAlert={showAlert} heading="Enter the text to analyze below" mode={Mode}/>
 
-</Routes>
+
+{/* </Routes> */}
 </div>
-</Router>
+{/* </Router> */}
      </>
      // if we write <Navbar> then automatically the component will be imported. written after </nav>
   );
 }
 
 export default App;
+
+    // GITHUB PAGES 
+// to deploy the file in the github, the github pages are used from deployment of create react app website. the react app is made to run by the command (npm run  build) this makes to host the website properly.
+//           The github pages doesn't support the ROUTER so removing of the router option can make easy deloyment of the react app in github 
