@@ -71,7 +71,7 @@ function App() {
 {/* <Navbar /> */}
 {/* <Router> */}
 
-<Navbar title="varun" mode={Mode} toggleMode={toggleMode}/>
+<Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode}/>
 <Alert alert={alert}/>
 <div className="container my-3">
 {/* <Routes> */}
