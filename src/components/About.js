@@ -1,43 +1,51 @@
-import React, { useState} from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
   
   // write useState and select the emmet
-const [MyStyle,setMyStyle]=useState(
-  {
-    color:'black',
-    backgroundColor:'white'
-    // javascript uses camelcase, with no dashes '-'
-  }
-)
+// const [MyStyle,setMyStyle]=useState(
+//   {
+//     color:'black',
+//     backgroundColor:'white'
+//     // javascript uses camelcase, with no dashes '-'
+//   }
+// ) no state is needed for this 
 
-// for button
+let  MyStyle={
+    color:props.mode==='dark'?'white':'black',
+    backgroundColor:props.mode==='dark'?'#172a3e':'white'
 
-const [btnText,setbtnText] = useState("Enable light mode")
-
-const toggleStyle = ()=>{
-  if(MyStyle.color === 'black'){
-    setMyStyle({
-      color:'white',
-      backgroundColor:'black'
-    })
-    setbtnText("Enable light mode")
-  }
-  else{
-    setMyStyle({
-      color:'black',
-      backgroundColor:'white'
-    })
-    setbtnText("Enable dark mode")
-  }
-  console.log("dark");
 }
+
+
+// ------------for button
+// this was for button in the about section to enable the dark mode 
+// const [btnText,setbtnText] = useState("Enable light mode")
+
+// -------no toggle style for total dark mode enable 
+// const toggleStyle = ()=>{
+//   if(MyStyle.color === 'black'){
+//     setMyStyle({
+//       color:'white',
+//       backgroundColor:'black'
+//     })
+//     setbtnText("Enable light mode")
+//   }
+//   else{
+//     setMyStyle({
+//       color:'black',
+//       backgroundColor:'white'
+//     })
+//     setbtnText("Enable dark mode")
+//   }
+//   console.log("dark");
+// }
 
 
 
   return (
-    <div className="container" style={MyStyle}>
-      <h2 className="my-3">About Us</h2>
+    <div className="container">
+      <h2 className="my-3" style={{color:props.mode==='dark'?'white':'black'}}>About Us</h2>
           <div className="accordion" id="accordionPanelsStayOpenExample">
       <div className="accordion-item">
         <h2 className="accordion-header" id="panelsStayOpen-headingOne">
@@ -76,9 +84,11 @@ const toggleStyle = ()=>{
         </div>
       </div>
     </div>
-    <div className="container my-3">
+
+    {/* toggleStyle function was to enable the dark mode in the about  */}
+    {/* <div className="container my-3">
         <button onClick={toggleStyle} type='button' className="btn btn-primary">{btnText}</button>
-    </div>
+    </div> */}
     </div>
   )
 }

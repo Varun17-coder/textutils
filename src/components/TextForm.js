@@ -37,6 +37,7 @@ export default function TextForm(props) {
     const handleCopy = ()=>{
         var text = document.getElementById("myBox");
         text.select();
+        document.getSelection().removeAllRanges();// this funtions will remove the selection 
         navigator.clipboard.writeText(text.value);
         if(text===''){
             props.showAlert("write the content","warning") 
@@ -77,18 +78,18 @@ export default function TextForm(props) {
              {/* if we wnat to change the color of the textarea we can do it  but I'm not doing it */}
          <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="10" placeholder='Enter the text'></textarea>
          </div>
-         <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
-         <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
-         <button className="btn btn-primary mx-1" onClick={handleClrClick}>Clear Text</button>
-         <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
-         <button className="btn btn-primary mx-1" onClick={handleSpaces}>Remove extra spaces</button>
+         <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+         <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
+         <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClrClick}>Clear Text</button>
+         <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
+         <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleSpaces}>Remove extra spaces</button>
     </div>
     <div className="container my-3" style={{color:props.mode==='dark'?'white':'black'}}>
         <h2>Your text summary</h2>
-        <p> {text.split(" ").filter(word=>word!=='').length} words {text.length} characters</p>
-        <p>{0.008*text.split(" ").length} Minutes to read</p>
+        <p> {text.split(" ").filter((word)=>{ return word.length!==0}).length} words {text.length} characters</p>
+        <p>{0.008*text.split(" ").filter((word)=>{ return word.length!==0}).length} Minutes to read</p>
         <h3>Peview</h3>
-        <p>{text.length>0?text:'Enter something in the text box to preview '}</p>
+        <p>{text.length>0?text:'nothing to preview'}</p>
     </div>
     </>
   )

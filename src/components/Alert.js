@@ -9,9 +9,15 @@ function Alert(props) {
   }
   return (
     // if the (props.alert) is null then the statements after the && will not execute else it will execute if the (props.alert) is not null 
-    props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`}role="alert">
+    <div style={{height:'37px'}}>
+        {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`}role="alert">
       <strong>{capitalize(props.alert.type)}</strong>: {props.alert.msg}
+  
+    </div>}
     </div>
+
+    // ------ to avoid shift of the page we should avoid cummulative layout shift(cls).This is done by setting the height of the alert 
+    
   )
 }
 

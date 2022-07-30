@@ -77,7 +77,7 @@ function App() {
 {/* <Routes> */}
   {/* /user ----> Component 1
   /user/home ---> ----> component 2 */}
-          {/* <Route exact path="/about" element={<About/>} /> */}
+          {/* <Route exact path="/about" element={<About mode={Mode}/>} /> */}
           {/* <Route exact path="/" element={<TextForm  showAlert={showAlert} heading="Enter the text to analyze below" mode={Mode}/>}/> */}
           <TextForm  showAlert={showAlert} heading="Enter the text to analyze below" mode={Mode}/>
 
